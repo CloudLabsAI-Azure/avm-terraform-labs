@@ -113,6 +113,10 @@ In this part we are going to get a local copy of the lab files for use in the re
       ![](../../images/lf-07.png)
 
 
+1. Open a a new terminal.
+
+   ![](../../images/vsc-terraform-lab-new-terminal.png)
+
 1. Open the VSCode Terminal and navigate to the `avm-lab` folder.
 
       ```pwsh
@@ -226,11 +230,11 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/tf-02.png)
 
-1. In the Search bar, give the name as **terraform.tfvars**.
+1. In the Search bar, give the name as **terraform.tfvars**
 
    ![](../../images/tf-03.png)
 
-1. In the pop-up, make sure the name is **terraform**, and click **Create File**.
+1. In the Create New File dialog box, verify that the file name is terraform, ensure the file is created in the `C:\Users\azureuser\my-lab-folder\avm-lab` directory, and then click Create File.
 
    ![](../../images/tf-04.png)
 
@@ -318,17 +322,32 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
     ![](../../images/git-04.png)
 
-### Part 2 - Virtual network and subnets
+## Task 4 - Virtual network and subnets
 
 In this part we are going to add a virtual network and subnets to our Terraform configuration by leveraging the Azure Verified Module for Virtual Network. The Virtual Network is going to be used to provide private connectivity between and to our virtual machine, key vault and storage account.
 
 >IMPORTANT: This lab is incremental, you must not delete any files from the previous lab (especially the `terraform.tfstate` file). You must copy the files from the next lab into the `avm-lab` folder and only replace the existing files when prompted.
+
+**Azure Networking Concepts:**
+
+| Concept | Description |
+|:--------|:------------|
+| **Address Space** | The private IP CIDR block for the entire VNet (e.g. `10.0.0.0/22`). |
+| **Subnet** | A logical subdivision of the VNet's address space. Resources are deployed into subnets. |
+| **Region scope** | VNets exist within a single Azure region. |
+| **CIDR Notation** | Specifies IP ranges using slash notation such as `/16` or `/24`. |
 
 1. Copy the files from the [part 2](labs/part02-vnet/) folder into the `avm-lab` folder. This will add some new files and replace some files.
 
       ```pwsh
       copy ../avm-terraform-labs/labs/part02-virtual-network/* .
       ```
+
+   ![](../../images/vn-1.png)
+
+1. Navigate to the `my-lab-folder` directory and verify that the files are present.
+
+   ![](../../images/vn-2.png)
 
       Your file structure should now look like this if you have followed the instructions correctly (this structure will continue to grow as you progress through the lab):
 
@@ -354,7 +373,9 @@ In this part we are going to add a virtual network and subnets to our Terraform 
       ┗ 📂avm-terraform-labs
       ```
 
-1. Open your `terraform.tfvars` and update it with the following code:
+1. Open the **terraform.tfvars (1)** file, update it with the following **code (2)**, and then save the file using `Ctrl + s`.
+
+   ![](../../images/vn-3.png)
 
       ```hcl
       address_space = "10.0.0.0/22"
@@ -381,17 +402,69 @@ In this part we are going to add a virtual network and subnets to our Terraform 
       }
       ```
 
-1. Run `terraform init` to install the AVM module for Virtual Networks and other new resources related to networking.
-1. Navigate to the `Source Control` tab in Visual Studio Code and review the changes to the files.
-1. Open the `avm.ip_addresses.tf` file and note the use of a utility module here, pay close attention to the `source` and `version` properties. A utility module is a helper module that doesn't deploy anything itself, but is used to calculate common values.
-1. Open the `avm.virtual-network.tf` file and look at each of the properties, paying close attention to the `source` and `version` properties.
-1. Examine the diagnostics settings in `locals.tf` and take note that this same setting will be applied to all of the AVM modules in the lab.
-1. In order to find more detail about AVM modules, you can navigate to their documentation. For example, you can find the documentation for the Virtual Network module [here](https://registry.terraform.io/modules/Azure/avm-res-network-virtualnetwork/azurerm/latest). From there you can navigate to the source code and see the module's implementation [here](https://github.com/Azure/terraform-azurerm-avm-res-network-virtualnetwork).
-1. Apply the changes with Terraform: `terraform apply -auto-approve`.
-1. Review the deployed resources in the Azure Portal.
-1. Commit the changes to git: `git add . && git commit -m "Add virtual network and subnets"`.
+1. Run the following command to initialize the Terraform configuration and install the Azure Verified Module (AVM) for Virtual Networks along with the required networking resources.
 
-### Part 3 - Key Vault
+   ```
+   terraform init
+   ```
+
+   ![](../../images/tf-11.png)
+
+1. Navigate to the **Source Control** tab in Visual Studio Code and review the changes to the files.
+
+   ![](../../images/tf-12.png)
+
+   ![](../../images/tf-13.png)
+
+1. Open the **avm.ip_addresses.tf (1)** file and note the use of a utility module here, pay close attention to the **source and version (2)** properties. A utility module is a helper module that doesn't deploy anything itself, but is used to calculate common values.
+
+   ![](../../images/avm-01.png)
+
+1. Open the **avm.virtual-network.tf (1)** file and look at each of the properties, paying close attention to the **source and version (2)** properties.
+
+   ![](../../images/avm-02.png)
+
+1. Examine the diagnostics settings in **locals.tf** and take note that this same setting will be applied to all of the AVM modules in the lab.
+
+   ![](../../images/avm-03.png)
+
+1. In order to find more detail about AVM modules, you can navigate to their documentation. For example, you can find the documentation for the Virtual Network module [here](https://registry.terraform.io/modules/Azure/avm-res-network-virtualnetwork/azurerm/latest). From there you can navigate to the source code and see the module's implementation [here](https://github.com/Azure/terraform-azurerm-avm-res-network-virtualnetwork).
+
+1. Run the following command in the terminal to apply the Terraform configuration and deploy the Azure resources.
+
+   ```
+   terraform apply -auto-approve
+   ```
+
+   ![](../../images/tf-14.png)
+
+1. After the command completes successfully, you should see output similar to the following:
+
+   ![](../../images/tf-15.png)
+   
+1. Review the deployed resources in the Azure portal. In the global search bar, type **Virtual network (1)**, and then select **Virtual networks (2)** from the search results.
+
+   ![](../../images/vnet-01.png)
+
+1. Select the newly created **Virtual network**.
+
+   ![](../../images/vnet-02.png)
+
+1. Review the **Virtual network** that was created as part of the Terraform deployment.
+
+   ![](../../images/vnet-03.png)
+
+1. Navigate back to Visual Studio Code, and in the terminal, run the following command to commit the changes to the Git repository:
+
+   ```
+   git add .  
+   git commit -m "Add virtual network and subnets"
+
+   ```
+
+   ![](../../images/tf-16.png)
+
+## Task 5 - Key Vault
 
 In this part we are going to add a Key Vault to our Terraform configuration by leveraging the Azure Verified Module for Key Vault. The Key Vault is going to be used to store the customer managed key for our storage account and the SSH private key for our virtual machine.
 
@@ -401,14 +474,46 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
       copy ../avm-terraform-labs/labs/part03-key-vault/* .
       ```
 
-1. Run `terraform init` to install the AVM module for Key Vault.
-1. Navigate to the `Source Control` tab in Visual Studio Code and review the changes to the files.
-1. Open the `avm.key-vault.tf` file and look at each of the properties, paying close attention to the `private_endpoints` and `role_assignments` variables.
-1. Apply the changes with Terraform: `terraform apply -auto-approve`.
-1. Review the deployed resources in the Azure Portal.
-1. Commit the changes to git: `git add . && git commit -m "Add key vault"`.
+   ![](../../images/kv-01.png)
 
-### Part 4 - Storage account
+1. Run the following command to initialize the Terraform configuration and install the Azure Verified Module (AVM) for Key Vault.
+
+   ```
+   terraform init
+   ```
+
+   ![](../../images/kv-02.png)
+
+1. Open the **avm.key_vault.tf (1)** file and look at each of the properties, paying close attention to the **private_endpoints (2)** and **role_assignments (3)** variables.
+
+   ![](../../images/kv-03.png)
+
+1. Run the following command to apply the Terraform configuration and deploy the Azure resources.
+
+   ```
+   terraform apply -auto-approve
+   ```
+
+   ![](../../images/kv-03.png)
+
+1. Navigate back to the Azure portal. In the search bar, type **Key vault (1)**, and then select **Key vaults (2)** from the search results to view the newly created resource.
+
+   ![](../../images/kv-04.png)
+
+1. Select the newly created Key vault, and review the resource.
+
+   ![](../../images/kv-05.png)
+
+1. Commit the changes to git: 
+
+   ```
+   git add .  
+   git commit -m "Add key vault"
+   ```
+
+   ![](../../images/kv-06.png)
+
+## Task 6 - Storage account
 
 In this part we are going to add a Storage Account to our Terraform configuration by leveraging the Azure Verified Module for Storage Account. The Storage Account is the main component of our demo lab and we will interact with it later on.
 
