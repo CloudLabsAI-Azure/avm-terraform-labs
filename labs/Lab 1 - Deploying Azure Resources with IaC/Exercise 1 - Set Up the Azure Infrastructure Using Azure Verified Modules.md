@@ -1,3 +1,5 @@
+# Exercise 1: Set Up the Azure Infrastructure Using Azure Verified Modules
+
 ### Prerequisites
 
 * HashiCorp Terraform CLI Version 1.10 or higher: [Download](https://www.terraform.io/downloads)
