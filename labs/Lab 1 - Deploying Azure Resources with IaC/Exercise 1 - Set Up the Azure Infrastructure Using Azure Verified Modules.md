@@ -570,7 +570,6 @@ In this part we are going to add a Storage Account to our Terraform configuratio
 
 In this lab, you completed the following:
 
-* Cloned the lab repository and configured the local Terraform workspace.
 * Authenticated with Azure and configured the target subscription for the deployment.
 * Initialized the Terraform configuration and deployed the foundational Azure infrastructure using Azure Verified Modules (AVM).
 * Provisioned core Azure resources, including a Resource Group, Log Analytics Workspace, Virtual Network, Key Vault, and Storage Account.
