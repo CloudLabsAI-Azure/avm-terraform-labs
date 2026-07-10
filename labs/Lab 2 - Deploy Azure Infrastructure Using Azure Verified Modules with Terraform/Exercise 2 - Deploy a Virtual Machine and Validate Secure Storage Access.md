@@ -65,8 +65,6 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
 
      ![](../../images/tf-init-n1.png)   
 
-1. Apply the changes with Terraform. NOTE: We are applying this now, because the bastion can take a few minutes to deploy.
-
 1. Navigate to the **Source Control (1)** tab in Visual Studio Code and review the **Changes (2)** to the files.
 
    ![](../../images/sc-01.png)   
@@ -134,11 +132,11 @@ In this part we are going to connect to the virtual machine via the Azure Bastio
 
    ![](../../images/vm-11.png)
 
-1. Click `Connect`. You may see a pop-up blocked message, click on the pop-up blocked icon in the address bar and select `Always allow pop-ups and redirects from https://portal.azure.com`.
+1. Clear the **Open in new browser tab (1)** checkbox, and then click **Connect (2).**
 
    ![](../../images/vm-13.png)
 
-1. A new browser window will open with a terminal session to the VM.
+1. After you click **Connect**, the Virtual Machine opens in a new terminal session through Azure Bastion.
 
    ![](../../images/vm-14.png)
 
@@ -178,7 +176,7 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
    ![](../../images/sa-05.png)
 
-1. Select the **Storage Account (1)**, and copy the name of the **Storage Account (2).**
+1. Select the **Storage Account (1)**, copy the **Storage Account (2)** name , and save it in Notepad for use in the next steps.
 
    ![](../../images/sa-06.png)
 
@@ -192,7 +190,7 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
    ![](../../images/blob-02.png)
 
-1. Run to list the blobs in the container.
+1. Run the following command to list the blobs in the container. Replace <storage-account-name> with the storage account name you copied in **Step 3.**
 
    ```
    az storage blob list --account-name <storage-account-name> --container-name demo --auth-mode login
@@ -200,7 +198,7 @@ We are going to create a blob in the storage account using the Azure CLI form th
 
    ![](../../images/blob-03.png)
 
-1. Run to download the blob to a new file.
+1. Run the following command to download the blob to a new file. Replace <storage-account-name> with the storage account name you copied in **Step 3.**
 
    ```
    az storage blob download --account-name <storage-account-name> --container-name demo --name hello.txt --file hello2.txt --auth-mode login
