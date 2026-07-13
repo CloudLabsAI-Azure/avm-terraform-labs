@@ -4,7 +4,7 @@
 
 ## 📘 Scenario
 
-As a Cloud Infrastructure Engineer at Zava, you have been tasked with establishing the organization's foundational Azure infrastructure using Azure Verified Modules (AVMs) for Terraform. To ensure consistency, security, and scalability across deployments, Zava has standardized on Infrastructure as Code (IaC) practices and reusable Microsoft-validated Terraform modules.
+As a Cloud Infrastructure Engineer at Contoso, you have been Contosotasked with establishing the organization's foundational Azure infrastructure using Azure Verified Modules (AVMs) for Terraform. To ensure consistency, security, and scalability across deployments, Contoso has standardized on Infrastructure as Code (IaC) practices and reusable Microsoft-validated Terraform modules.
 
 In this exercise, you will prepare the Terraform development environment, authenticate to Azure, and progressively deploy core Azure resources, including a Resource Group, Log Analytics Workspace, Virtual Network, Key Vault, and Storage Account. By leveraging AVMs, you will build a secure and modular infrastructure that serves as the foundation for hosting workloads in subsequent exercises.
 
@@ -67,18 +67,6 @@ In this task, you will prepare the local development environment required for Te
    This command displays the currently installed Terraform CLI version. You should see **Terraform version 1.9.x** or later installed in the environment.
 
    ![](../../images/vsc-terraform-version-01.png)
-
-1. Copy the GitHub repository URL from the browser's address bar. You will use this URL to configure the GitHub repository in Visual Studio Code.
-
-   ![](../../images/github-login.png)
-
-1. Use the copied GitHub repository URL to set the remote URL for the required repository.
-
-   ```
-   git remote set-url origin https://github.com/Cloudlabs-Enterprises/avm-terraform-labs-<inject key="Deployment-ID" enableCopy="false"/>
-   ```
-
-   ![](../../images/github-01.png)
 
 1. Sign in to Azure from the integrated terminal:
 
@@ -266,6 +254,18 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
    ![](../../images/lw-02.png)
 
+1. Navigate to the **GitHub repository** in your browser. Copy the **GitHub repository URL** from the browser's address bar. You will use this URL to configure the repository in **Visual Studio Code**.
+
+   ![](../../images/github-login.png)
+
+1. Use the copied GitHub repository URL to set the remote URL for the required repository.
+
+   ```
+   git remote set-url origin https://github.com/Cloudlabs-Enterprises/avm-terraform-labs-<inject key="Deployment-ID" enableCopy="false"/>
+   ```
+
+   ![](../../images/github-01.png)
+
 1. Run the following command to initialize a new Git repository with the default branch set to main.
 
    ```
@@ -281,6 +281,8 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    ```
 
    ![](../../images/t2s21.png)
+
+
 
 1. Run the following command to commit the staged files to the Git repository.
 
@@ -453,8 +455,14 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 1. Navigate back to Visual Studio Code, and in the terminal, run the following command to commit the changes to the Git repository:
 
    ```
-   git add .  
+   git add .
+   ```
+
+   ```
    git commit -m "Add virtual network and subnets"
+   ```
+   
+   ```
    git push origin main
    ```
 
@@ -511,8 +519,14 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
 1. Commit the changes to git: 
 
    ```
-   git add .  
+   git add .
+   ```
+   
+   ```
    git commit -m "Add key vault"
+   ```
+   
+   ```
    git push origin main
    ```
 
@@ -528,7 +542,7 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
 
 In this part we are going to add a Storage Account to our Terraform configuration by leveraging the Azure Verified Module for Storage Account. The Storage Account is the main component of our demo lab and we will interact with it later on.
 
-1. Copy the files from the **Part 4** folder into the **avm-lab** folder. If prompted, overwrite the existing files while retaining all other files.
+1. Copy the files from the **Part 4** folder into the **avm-lab** folder.
 
       ```pwsh
       copy ../labs/part04-storage-account/* .
@@ -571,11 +585,16 @@ In this part we are going to add a Storage Account to our Terraform configuratio
 1. Commit the changes to git:
 
    ```
-   git add .  
+   git add .
+   ```
+   ```
    git commit -m "Add storage account"
+   ```
+   
+   ```
    git push origin main
    ```
-
+   
    ![](../../images/t5s8.png)
 
    ![](../../images/t5s8-1.png)
