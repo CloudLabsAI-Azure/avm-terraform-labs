@@ -1,6 +1,29 @@
-# Exercise 2 - Building a Secure, Private Network Foundation with Azure Verified Modules
+# Exercise 2:  Building a Secure, Private Network Foundation with Azure Verified Modules
 
-## Task 1 - Configure the Virtual Network and Subnets
+### Estimated Duration:
+
+## 📘 Scenario
+
+Contoso, a growing financial services company, is modernizing its cloud infrastructure practices. After a recent security review, Contoso's leadership mandated that all new Azure workloads must be deployed using Infrastructure as Code, communicate over private networks rather than the public internet, and encrypt sensitive data with keys that Contoso controls. 
+
+As a cloud engineer on Contoso's platform team, you have been tasked with building the secure network foundation for an upcoming workload. Rather than authoring every resource configuration from scratch, your team has standardized on Azure Verified Modules (AVM) — Microsoft-supported Terraform modules that encode Azure best practices out of the box. In this exercise, you will extend the Terraform configuration from the previous exercise to deploy a virtual network with purpose-built subnets, a Key Vault to safeguard Contoso's encryption keys and credentials, and a Storage Account secured with a customer-managed key — committing each incremental change to Contoso's GitHub repository as you go.
+
+
+## 📖 Overview
+
+In this exercise, you will incrementally build Contoso's secure, private network foundation on Azure using Terraform and Azure Verified Modules. You will begin by deploying a virtual network with a /22 address space, divided into dedicated subnets for Azure Bastion, private endpoints, and virtual machines — complete with a NAT gateway and network security group — while using an AVM utility module to calculate subnet address ranges automatically. Next, you will deploy an Azure Key Vault that is accessible only through a private endpoint with Private DNS Zone integration, and grant administrative access using Azure role-based access control (RBAC). 
+
+Finally, you will deploy a Storage Account that authenticates through a managed identity, encrypts data at rest with a customer-managed key stored in the Key Vault, and hosts a private blob container. Throughout the exercise, a reusable diagnostic settings configuration will send logs and metrics from every resource to a central Log Analytics Workspace, and you will commit each change to a GitHub repository, following real-world Infrastructure as Code workflows.
+
+## 🎯 Objectives
+
+In this exercise, you will complete the following tasks:
+
+- Task 1: Configure the Virtual Network and Subnets
+- Task 2: Deploy the Key Vault
+- Task 3: Deploy the Storage Account
+
+## Task 1: Configure the Virtual Network and Subnets
 
 In this part we are going to add a virtual network and subnets to our Terraform configuration by leveraging the Azure Verified Module for Virtual Network. The Virtual Network is going to be used to provide private connectivity between and to our virtual machine, key vault and storage account.
 
@@ -181,7 +204,7 @@ In this part we are going to add a virtual network and subnets to our Terraform 
 
    ![](../../images/github-page.png)
 
-## Task 2 - Deploy the Key Vault
+## Task 2: Deploy the Key Vault
 
 In this part we are going to add a Key Vault to our Terraform configuration by leveraging the Azure Verified Module for Key Vault. The Key Vault is going to be used to store the customer managed key for our storage account and the SSH private key for our virtual machine.
 
@@ -269,7 +292,7 @@ In this part we are going to add a Key Vault to our Terraform configuration by l
 
    ![](../../images/t4s8.png)
 
-## Task 3 - Deploy the Storage Account
+## Task 3: Deploy the Storage Account
 
 In this part we are going to add a Storage Account to our Terraform configuration by leveraging the Azure Verified Module for Storage Account. The Storage Account is the main component of our demo lab and we will interact with it later on.
 
@@ -354,5 +377,20 @@ In this part we are going to add a Storage Account to our Terraform configuratio
 
    ![](../../images/t5s8-2.png)
 
+## 🧾 Summary
+
+In this exercise, you completed the following:
+
+* Deployed a Virtual Network with dedicated subnets for Azure Bastion, Private Endpoints, and Virtual Machines using the Azure Verified Module (AVM) for Virtual Network.
+* Used an AVM utility module to automatically calculate IP address ranges and subnet prefixes from the defined address space.
+* Deployed an Azure Key Vault secured with a Private Endpoint, Private DNS Zone integration, and RBAC role assignments.
+* Deployed a Storage Account configured with a managed identity, customer-managed key encryption, and a private blob container.
+* Applied consistent diagnostic settings across all resources, sending logs and metrics to a central Log Analytics Workspace.
+* Validated the deployed resources in the Azure portal to confirm successful deployment.
+* Tracked infrastructure changes by committing the Terraform configuration to the GitHub repository after each deployment stage.
+
 ---
 
+You have successfully completed the lab. Click **Next >>** in the lower-right corner to proceed to the next lab.
+
+![](../../images/next-button.png)

@@ -23,7 +23,7 @@ In this exercise, you will complete the following tasks:
 - Task 3: Install the Azure CLI and Sign In
 - Task 4: Upload and Manage Blobs in the Storage Account
 
-## Task 1 - Deploy the Virtual Machine and Azure Bastion
+## Task 1: Deploy the Virtual Machine and Azure Bastion
 
 In this part we are going to add a Virtual Machine to our Terraform configuration by leveraging the Azure Verified Module for Virtual Machine. The Virtual Machine is going to be used to interact with the Storage Account later. We are also going to add a role assignment to the storage module to assign permissions to the managed identity of the virtual machine to the storage container.
 
@@ -126,7 +126,7 @@ In this part we are going to add a Virtual Machine to our Terraform configuratio
    ![](../../images/e2t1s8-2.png)
 
 
-## Task 2 - Connect to the Virtual Machine Using Azure Bastion
+## Task 2: Connect to the Virtual Machine Using Azure Bastion
 
 In this part we are going to connect to the virtual machine via the Azure Bastion service using the SSH private key stored in the Key Vault.
 
@@ -186,7 +186,7 @@ In this part we are going to connect to the virtual machine via the Azure Bastio
 
    ![](../../images/e2t2s14.png)
 
-## Task 3 - Install the Azure CLI and Sign In
+## Task 3: Install the Azure CLI and Sign In
 
 We are going to install the Azure CLI and login with the system assigned managed identity of the VM from the Azure Bastion SSH terminal.
 
@@ -210,7 +210,7 @@ We are going to install the Azure CLI and login with the system assigned managed
 
    ![](../../images/vm-16.png)
 
-## Task 4 - Upload and Manage Blobs in the Storage Account
+## Task 4: Upload and Manage Blobs in the Storage Account
 
 We are going to create a blob in the storage account using the Azure CLI form the Azure Bastion SSH terminal.
 

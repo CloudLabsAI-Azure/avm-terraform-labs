@@ -1,18 +1,18 @@
-# Exercise 1: Set Up the Azure Infrastructure Using Azure Verified Modules
+# Exercise 1: Preparing the Terraform Environment and Deploying the Base Infrastructure with Azure Verified Modules
 
 ### Estimated Duration:
 
 ## 📘 Scenario
 
-As a Cloud Infrastructure Engineer at Contoso, you have been Contosotasked with establishing the organization's foundational Azure infrastructure using Azure Verified Modules (AVMs) for Terraform. To ensure consistency, security, and scalability across deployments, Contoso has standardized on Infrastructure as Code (IaC) practices and reusable Microsoft-validated Terraform modules.
+As a Cloud Infrastructure Engineer at Contoso, you have been tasked with establishing the organization's foundational Azure infrastructure using Azure Verified Modules (AVMs) for Terraform. To ensure consistency, security, and scalability across deployments, Contoso has standardized on Infrastructure as Code (IaC) practices and reusable, Microsoft-validated Terraform modules.
 
-In this exercise, you will prepare the Terraform development environment, authenticate to Azure, and progressively deploy core Azure resources, including a Resource Group, Log Analytics Workspace, Virtual Network, Key Vault, and Storage Account. By leveraging AVMs, you will build a secure and modular infrastructure that serves as the foundation for hosting workloads in subsequent exercises.
+In this exercise, you will prepare the Terraform development environment, authenticate to Azure, and deploy the base infrastructure — a Resource Group and a Log Analytics Workspace — using your first Azure Verified Module. The Log Analytics Workspace will serve as the central destination for diagnostic logs and metrics from every resource Contoso deploys in the exercises that follow.
 
 ## 📖 Overview
 
-In this exercise, you will configure the local Terraform development environment and use Azure Verified Modules (AVMs) to provision foundational Azure infrastructure. You will begin by verifying the required tools, authenticating to Azure, and initializing the Terraform configuration. Next, you will deploy essential Azure resources such as a Log Analytics Workspace, Virtual Network with subnets, Azure Key Vault, and an Azure Storage Account using reusable Terraform modules.
+In this exercise, you will configure the local Terraform development environment and use Azure Verified Modules (AVMs) to deploy Contoso's base Azure infrastructure. You will begin by verifying the required tools in Visual Studio Code, confirming the Terraform CLI installation, and authenticating to Azure. Next, you will set up the Terraform root module and examine its core configuration files — including providers, local values, variables, and outputs — to understand how consistent resource naming and reusable values are defined. You will then deploy a Resource Group and a Log Analytics Workspace using the AVM modules, following the standard Terraform workflow of init, plan, and apply.
 
-Throughout the exercise, you will validate each deployment in the Azure portal and use Git and GitHub to version-control your Terraform configurations. By the end of the exercise, you will have successfully deployed a secure, production-ready Azure infrastructure that provides the networking, security, monitoring, and storage services required for the remaining lab activities.
+Throughout the exercise, you will validate the deployment in the Azure portal and initialize a Git repository to version-control your Terraform configuration, pushing your first commit to GitHub. By the end of the exercise, you will have a working development environment and the monitoring foundation required for the remaining lab activities.
 
 ## 🎯 Objectives
 
@@ -47,13 +47,17 @@ In this task, you will prepare the local development environment required for Te
 
    ![](../../images/vsc-select-folder-terraformlabs-01.png)
 
+1. Open the integrated terminal by selecting **Terminal → New Terminal**.
+
+   ![](../../images/vsc-terraform-lab-new-terminal.png)
+
 1. Now you will see another screen Do you trust the authors of the files in this folder?. Click **Trust Folder & Continue**.
 
    ![](../../images/vsc-trust-folder-terraformlabs-01.png)
 
-1. Open the integrated terminal by selecting **Terminal → New Terminal**.
+   >**Note**: If you see a yellow warning in the **PowerShell** terminal, hover your cursor over it, click **Relaunch Terminal**.
 
-   ![](../../images/vsc-terraform-lab-new-terminal.png)
+   ![](../../images/git-n.png)
 
 1. In the integrated terminal, verify that Terraform is installed by running the following command:
 
@@ -95,7 +99,7 @@ In this task, you will prepare the local development environment required for Te
 
    ![](../../images/lf-09.png)
 
-## Task 2 - Deploy the Base Infrastructure
+## Task 2: Deploy the Base Infrastructure
 
 In this part we are going to setup our Terraform root module and deploy an Azure Resource Group and Log Analytics Workspace ready for the rest of the lab. In this part we introduce our first Azure Verified Module, the `avm.log_analytics_workspace` module.
 
@@ -261,10 +265,6 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
    ```
    terraform init
    ```
-
-   >**Note**: If you see a yellow warning in the **PowerShell** terminal, hover your cursor over it, click **Relaunch Terminal**, and then navigate back to the **avm-lab** directory before running the command again.
-
-   ![](../../images/git-n.png)
    
    - You should see: `Terraform has been successfully initialized!`
 
@@ -389,13 +389,16 @@ The Log Analytics Workspace is used as the target for diagnostic settings for al
 
 ## 🧾 Summary
 
-In this lab, you completed the following:
+In this exercise, you completed the following:
 
+* Prepared the Terraform development environment in Visual Studio Code and verified the Terraform CLI installation.
 * Authenticated with Azure and configured the target subscription for the deployment.
-* Initialized the Terraform configuration and deployed the foundational Azure infrastructure using Azure Verified Modules (AVM).
-* Provisioned core Azure resources, including a Resource Group, Log Analytics Workspace, Virtual Network, Key Vault, and Storage Account.
+* Examined the Terraform root module, including providers, local values, variables, and outputs used for consistent resource naming.
+* Initialized the Terraform configuration and deployed a Resource Group and Log Analytics Workspace using Azure Verified Modules (AVM).
 * Validated the deployed resources in the Azure portal to confirm successful deployment.
-* Tracked infrastructure changes by initializing a Git repository and committing the Terraform configuration after each deployment stage.
+* Initialized a Git repository, committed the Terraform configuration, and pushed the initial commit to GitHub.
+
+---
 
 You have successfully completed the lab. Click **Next >>** in the lower-right corner to proceed to the next lab.
 
