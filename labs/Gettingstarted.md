@@ -170,7 +170,11 @@ Use the **slider (three vertical dots)** located between the **Virtual Machine**
 
    ![](.././images/23-7-25-g2.png)
 
-1. You'll see the **Sign in** tab. Here, enter your Azure Entra credentials and click **Next (2)**.
+1. You will see a **Pop-up** to request the **Permissions**, click **Accept**.
+
+   ![](.././images/prr-01.png)
+
+1. In case you see the **Sign in** tab. Here, enter your Azure Entra credentials and click **Next (2)**.
 
    - **Email/Username:** <inject key="AzureAdUserEmail"></inject> **(1)**
 
