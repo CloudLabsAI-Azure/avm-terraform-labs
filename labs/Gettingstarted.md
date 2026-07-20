@@ -1,4 +1,4 @@
-#  Introduction to using Azure Verified Modules for Terraform
+#  IaC with Terraform on Azure
 
 ### Overall Estimated Duration: 4 Hours 
 
@@ -85,7 +85,7 @@ A User Assigned Managed Identity is used to authenticate the Virtual Machine to 
 
 ## 🚀 Getting Started with Lab
 
-Welcome to your Introduction to using Azure Verified Modules for Terraform! We've prepared a seamless environment for you to explore Terraform concepts, deploy Azure infrastructure resources, and gain hands-on experience with modern Infrastructure as Code practices.
+Welcome to your IaC with Terraform on Azure! We've prepared a seamless environment for you to explore Terraform concepts, deploy Azure infrastructure resources, and gain hands-on experience with modern Infrastructure as Code practices.
 
 ### Accessing Your Lab Environment
 
